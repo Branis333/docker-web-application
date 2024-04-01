@@ -1,4 +1,10 @@
-FROM node:alpine
-COPY . .vscode/app/
+FROM node:19-alpine
+
+COPY package.json /app/
+COPY src /app/
+
 WORKDIR /app
-CMD ["npm", "server.js"]
+
+RUN npm install
+
+CMD ["node", "server.js"]
